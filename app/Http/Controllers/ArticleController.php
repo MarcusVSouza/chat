@@ -4,21 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\DataTransfer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 
 class ArticleController extends Controller
 {
+    
     public function index()
     {
-        $articles = DB::table('articles')->paginate(15);
-        // $articles = DB::table('articles');
-        // return $articles;
-        $encrypted = Crypt::encrypt($articles);
-        // return Article::all();
-        return $encrypted->toJson();
+        return Article::all();
+        // $dataTransfer = new DataTransfer;
+        // $articles = DB::table('articles')->paginate(15);
+        // // $articles = DB::table('articles');
+        // // return $articles;
+        // $encrypted = Crypt::encrypt($articles);
+        // $dataTransfer->data = $encrypted;
+        // return $dataTransfer;
     }
- 
+
     public function show($id)
     {
         return Article::find($id);
